@@ -1,0 +1,44 @@
+[{
+  "_id": 100,
+  "name": "Inception",
+  "genre": [
+    "Science Fiction",
+    "Action",
+    "Adventure"
+  ],
+  "year": 2010,
+  "rating": 9.3
+},
+{
+  "_id": 101,
+  "name": "The Shawshank Redemption",
+  "genre": [
+    "Drama"
+  ],
+  "year": 1994,
+  "rating": 9.8
+},
+{
+  "_id": 102,
+  "name": "Black Panther",
+  "year": 2018,
+  "genre": [
+    "Action",
+    "Sci-fi",
+    "Adventure",
+    "Drama"
+  ],
+  "rating": 8.9,
+  "reviews": [
+    {
+      "autherName": "Bob",
+      "rating": 9,
+      "review": "Best movie of the Marvel Universe!"
+    },
+    {
+      "autherName": "John",
+      "rating": 7.7,
+      "review": "Good, but not that good...!"
+    }
+  ]
+}]

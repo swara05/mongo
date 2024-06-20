@@ -1,0 +1,118 @@
+// insertOne = insert one data
+db.movies.insertOne({
+    _id: 100,
+    name: "Inception",
+    genre: ["Science Fiction", "Action", "Adventure"],
+    year : 2010,
+    rating: 8.8,
+})
+
+// insertMany = insert more than one data
+db.movies.insertMany([
+{
+    _id: 101,
+    name: "The Shawshank Redemption",
+    genre: ["Drama"],
+    year : 1994,
+    rating: 9.3,
+},
+{
+    _id: 102,
+    name: "The Godfather",
+    genre: ["Crime","Drama"],
+    year: 1972,
+    rating: 9.2,
+},
+{
+    _id: 103,
+    name: "The Dark Knight",
+    genre: ["Action","Crime","Drama"],
+    year: 2008,
+    rating: 9.0,
+},
+])
+
+// find = give all the data
+db.movies.find()
+
+// findOne = give first data from db
+db.movies.findOne()
+
+// find({}) = give particular data
+db.movies.find({
+    rating: 8.8,
+})
+
+// find({},{0,1}) = in second parameter if it's 1 then include that value else exclude
+db.movies.find({},{name: 1, genre:1})  //it gives id also
+db.movies.find({},{_id:0, name:1, genre:1})  //it only give name and genre not mention id
+
+//updateOne({},{}) = update one document
+db.movies.updateOne(
+    {
+        _id: 104
+    },
+    {
+        $set:{
+            name:"Avatar",
+            genre: ["Action","Sci-fi","Drama"],
+            year: 2023,
+            rating: 7.7,
+        }
+    }
+)
+
+//updateMany({},{atomic operator:{}}) = update more than one document
+db.movies.updateMany(
+{},
+{
+    $inc:{rating:0.5}
+})
+
+//deleteOne({}) = delete one document
+db.movies.deleteOne({name:"Avatar"})
+
+db.movies.updateOne(
+    {
+        _id: 102
+    },
+    {
+        $set:{
+            rating: 9.5,
+        }
+    }
+)
+
+//deleteMany({}) = delete more than one documents which have same value given in the parameters
+db.movies.deleteMany({rating: 9.5})
+
+
+//Relationship in mongoDB
+// 1 to n relationship
+db.movies.insertOne({
+    _id: 102,
+    name: "Black Panther",
+    year:2018,
+    genre: ["Action","Sci-fi","Adventure","Drama"],
+    rating: 8.9,
+    reviews: [
+        {
+            autherName: "Bob",
+            rating:9,
+            review: "Best movie of the Marvel Universe!"
+        },
+        {
+            autherName: "John",
+            rating:7.7,
+            review: "Good, but not that good...!"
+        },
+    ]
+}) 
+
+//find reviews
+db.movies.findOne({
+    name:"Black Panther",
+},
+{
+    reviews:1
+})
